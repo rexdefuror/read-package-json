@@ -20,6 +20,10 @@ jobs:
         run: npm run action
       - name: Get package.json
         uses: ./
+        id: package
+        with:
+          file: package.json
+          path: ./
       - name: Tag commit
         if: {{ ${{ env.PACKAGE_VERSION != "" }} }}
         uses: actions/github-script@v6
