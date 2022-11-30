@@ -1,4 +1,4 @@
-name: Deploy to GitHub Marketplace
+name: Pipeline
 
 on:
   push:
