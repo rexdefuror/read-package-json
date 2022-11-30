@@ -25,7 +25,7 @@ jobs:
           file: package.json
           path: ./
       - name: Tag commit
-        if: env.PACKAGE_VERSION != ""
+        if: env.PACKAGE_VERSION != ''
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
