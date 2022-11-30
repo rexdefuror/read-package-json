@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      
+
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -25,7 +25,7 @@ jobs:
           file: package.json
           path: ./
       - name: Tag commit
-        if: {{ ${{ env.PACKAGE_VERSION != "" }} }}
+        if: env.PACKAGE_VERSION != ""
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -68,5 +68,3 @@ jobs:
               name: env.PACKAGE_VERSION,
               body: 'Release read-package-json version ' + env.PACKAGE_VERSION
             })
-
-      
