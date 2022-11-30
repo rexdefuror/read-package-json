@@ -1,0 +1,68 @@
+name: Deploy to GitHub Marketplace
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run action
+      - name: Get package.json
+        uses: ./
+      - name: Tag commit
+        if: {{ ${{ env.PACKAGE_VERSION != "" }} }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const version = '${{ env.PACKAGE_VERSION }}'
+            const tag = `v${version}`
+            const commit = context.sha
+            const owner = context.repo.owner
+            const repo = context.repo.repo
+            const tagExists = await github.rest.git.getRef({
+              owner,
+              repo,
+              ref: `tags/${tag}`,
+            })
+            .then(() => true)
+            .catch(() => false)
+            if (tagExists) {
+              console.log(`Tag ${tag} already exists`)
+              core.exportVariable('tagging', false)
+              return;
+            }
+            await github.rest.git.createRef({
+              owner,
+              repo,
+              ref: `refs/tags/${tag}`,
+              sha: commit,
+            })
+            console.log(`Tag ${tag} created`)
+            core.exportVariable('tagging', true)
+      - name: Create release
+        if: env.tagging == 'true'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.RELEASE_TOKEN}}
+          script: |
+            const newRelease = await github.rest.repos.createRelease({
+              owner: 'rexdefuror',
+              repo: 'read-package-json',
+              tag_name: env.PACKAGE_VERSION,
+              name: env.PACKAGE_VERSION,
+              body: 'Release read-package-json version ' + env.PACKAGE_VERSION
+            })
+
+      

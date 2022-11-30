@@ -1,0 +1,28 @@
+{
+    "name": "read-package-json",
+    "version": "1.0.0",
+    "description": "",
+    "main": "lib/index.js",
+    "scripts": {
+        "action": "tsc && npm run pack",
+        "pack": "ncc build --source-map --minify --license licenses.txt"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rexdefuror/read-package-json.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rexdefuror/read-package-json/issues"
+    },
+    "homepage": "https://github.com/rexdefuror/read-package-json#readme",
+    "devDependencies": {
+        "@actions/core": "^1.10.0",
+        "@types/node": "^18.11.9",
+        "@vercel/ncc": "^0.34.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.3"
+    }
+}

@@ -1,0 +1,20 @@
+name: "Read package.json"
+author: "rexdefuror"
+description: "GitHub Action that reads a package.json file (or any JSON with same properties 😁)"
+branding:
+  icon: "package"
+  color: "green"
+
+inputs:
+  file:
+    description: "The file to read"
+    required: false
+    default: "package.json"
+  path:
+    description: "Path to file"
+    required: false
+    default: ./
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
