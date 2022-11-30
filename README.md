@@ -1,4 +1,4 @@
-[![Build](https://github.com/rexdefuror/read-package-json/actions/workflows/pipeline.yml/badge.svg)(https://github.com/rexdefuror/read-package-json/actions/workflows/pipeline.yml/badge.svg)
+[![Build](https://github.com/rexdefuror/read-package-json/actions/workflows/pipeline.yml/badge.svg)](https://github.com/rexdefuror/read-package-json/actions/workflows/pipeline.yml/badge.svg)
 
 ## Description
 
