@@ -64,7 +64,7 @@ jobs:
             const newRelease = await github.rest.repos.createRelease({
               owner: 'rexdefuror',
               repo: 'read-package-json',
-              tag_name: env.PACKAGE_VERSION,
-              name: env.PACKAGE_VERSION,
-              body: 'Release read-package-json version ' + env.PACKAGE_VERSION
+              tag_name: ${{ env.PACKAGE_VERSION }},
+              name: ${{ env.PACKAGE_VERSION }},
+              body: 'Release read-package-json version ' + ${{ env.PACKAGE_VERSION }}
             })
