@@ -10,7 +10,7 @@ Reads a package.json file and returns the contents as environment variables. Nam
 
 ```yaml
 - name: Package.json info
-  uses: rexdefuror/read-package-json@v1
+  uses: rexdefuror/read-package-json@v1.0.5
 
 - run: echo "name - ${{ env.PACKAGE_NAME }}"
 - run: echo "version - ${{ env.PACKAGE_VERSION }}"

@@ -22,8 +22,9 @@ const main = async () => {
 
         const justFileName = fileName.split('.')[0];
 
-        exportVariable(`${justFileName}_NAME`, packageFile.name);
+        exportVariable(`${justFileName.toUpperCase()}_NAME`, packageFile.name);
         exportVariable(`${justFileName.toUpperCase()}_VERSION`, packageFile.version);
+        exportVariable(`${justFileName.toUpperCase()}_DESCRIPTION`, packageFile.description);
     }
     catch (error: any) {
         setFailed(error.message);
