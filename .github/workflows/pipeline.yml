@@ -61,11 +61,11 @@ jobs:
         with:
           github-token: ${{secrets.RELEASE_TOKEN}}
           script: |
-            const version = v'${{ env.PACKAGE_VERSION }}'
+            const version = 'v${{ env.PACKAGE_VERSION }}'
             const newRelease = await github.rest.repos.createRelease({
               owner: 'rexdefuror',
               repo: 'read-package-json',
               tag_name: version,
               name: version,
-              body: 'Release read-package-json version ' + ${{ env.PACKAGE_VERSION }}
+              body: 'Release read-package-json version ' + '${{ env.PACKAGE_VERSION }}'
             })
