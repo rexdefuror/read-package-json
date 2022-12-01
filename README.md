@@ -26,7 +26,7 @@ Reads a package.json file and returns the contents as environment variables. Nam
     file: testing.json
 
 - run: echo "name - ${{ env.TESTING_NAME }}"
-- run: echo "version - ${{ env.TESTING_NAME }}"
+- run: echo "version - ${{ env.TESTING_VERSION }}"
 - run: echo "description - ${{ env.TESTING_DESCRIPTION }}"
 ```
 
@@ -40,7 +40,7 @@ Reads a package.json file and returns the contents as environment variables. Nam
     path: ./src
 
 - run: echo "name - ${{ env.TESTING_NAME }}"
-- run: echo "version - ${{ env.TESTING_NAME }}"
+- run: echo "version - ${{ env.TESTING_VERSION }}"
 - run: echo "description - ${{ env.TESTING_DESCRIPTION }}"
 ```
 
